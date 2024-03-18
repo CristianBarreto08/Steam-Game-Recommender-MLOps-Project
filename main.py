@@ -175,7 +175,7 @@ async def endpoint3(year: str):
             error_message = f"El año debe estar en el rango entre 2000 y 2100 {str(e)}"
             return JSONResponse(status_code=500, content={"error": error_message})
         
-        result = UsersRecommend(year)
+        result = UsersNotRecommend(year)
     
         if result:
             return result
