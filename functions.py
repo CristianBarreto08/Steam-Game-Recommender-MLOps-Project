@@ -36,7 +36,7 @@ def PlayTimeGenre(genero: str):
     max_hours_year = grouped_df.idxmax()
 
     # Construye el response_data
-    response_data = {"Año de lanzamiento con más horas jugadas para {}: {}".format(genero, max_hours_year)}
+    response_data = {"Año con más horas jugadas para {}: {}".format(genero, max_hours_year)}
 
     # Muestra el resultado
     return response_data
@@ -142,7 +142,7 @@ def UsersNotRecommend(year: int):
 
 
 def sentiment_analysis(year_released: int):
-    df = pd.read_parquet('Dataframes/Api_files/sentiment_analysis.parquet')
+    df = pd.read_parquet('../Dataframes/Api_files/sentiment_analysis.parquet')
 
     # Filtrar por el año de release
     result_df = df[df['year_released'] == year_released]
@@ -152,7 +152,6 @@ def sentiment_analysis(year_released: int):
     
     return response_data
 
-
 # ### ML
 
 # ### Recomendación item-item
@@ -161,7 +160,7 @@ def sentiment_analysis(year_released: int):
 
 
 def recomendacion_usuario(item_id):
-    df = pd.read_parquet('Dataframes/ML_files/ItemItem_recomenda.parquet')
+    df = pd.read_parquet('../Dataframes/ML_files/ItemItem_recomenda.parquet')
     
     # Filtrar el DataFrame por el año especificado
     result_df = df[df['item_id'] == item_id]
@@ -169,7 +168,6 @@ def recomendacion_usuario(item_id):
     response_data = result_df['Recomendaciones']
  
     return response_data
-
 
 # In[ ]:
 
