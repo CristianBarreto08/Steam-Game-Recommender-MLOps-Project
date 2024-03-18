@@ -1,3 +1,4 @@
+![Banner](Adicionales/Bann.jpg)
 # Proyecto SteamInsights: MLOps
 
 ¡Bienvenido a SteamInsights! Este proyecto se centra en implementar un sistema de recomendación de videojuegos para usuarios en la plataforma de Steam. Como MLOps Engineer, enfrentas el desafío de trabajar con datos crudos y no procesados, lo que dificulta la construcción del modelo.
@@ -22,6 +23,8 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
 
 - **Endpoint 5 (sentiment_analysis):** Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
 
+# Proceso del Proyecto
+![Funnel](Adicionales/funn.jpg)
 
 ## **Proyecto 1: Ingeniería de Datos (ETL y API)**
 
@@ -72,6 +75,10 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
    - Endpoint 4 (UsersWorstDeveloper)
 
    - Endpoint 5 (sentiment_analysis)
+
+
+#
+![Banner](Adicionales/Image.jpg)
 
 ## **2. Análisis Exploratorio de Datos (EDA)**
 
