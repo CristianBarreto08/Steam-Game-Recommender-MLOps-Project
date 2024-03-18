@@ -147,11 +147,13 @@ def sentiment_analysis(year_released: int):
     # Filtrar por el año de release
     result_df = df[df['year_released'] == year_released]
 
+    # Convertir las columnas que contienen numpy.int64 a tipos de Python nativos
+    result_df['column_name'] = result_df['column_name'].astype(int)  # Reemplaza 'column_name' con el nombre de la columna
+    
     # Convertir a formato de diccionario
     response_data = result_df.set_index('year_released').to_dict(orient='index')
     
     return response_data
-
 # ### ML
 
 # ### Recomendación item-item

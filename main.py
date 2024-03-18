@@ -159,7 +159,7 @@ async def endpoint3(year: str):
 
 
 @app.get("/UsersNotRecommend/{year}", tags=['UsersNotRecommend'])
-async def endpoint3(year: str):
+async def endpoint4(year: str):
     """
     Descripción: Retorna el top 3 de juegos MENOS recomendados por usuarios para el año dado.
     
@@ -200,7 +200,7 @@ async def endpoint3(year: str):
 
 
 @app.get("/sentiment_analysis/{year_released}", tags=['sentiment_analysis'])
-async def enpoint5(year_released: int):
+async def sentiment_analysis(year_released: int):
     """
     Descripción: Según el año de lanzamiento, se devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.
     
@@ -210,8 +210,17 @@ async def enpoint5(year_released: int):
     Ejemplo de retorno: {'year_released' : [Negative = 182, Neutral = 120, Positive = 278]}
     """
     try:
-        result = sentiment_analysis(year_released)
-        return result
+        
+        df = pd.read_parquet('Dataframes/Api_files/sentiment_analysis.parquet')
+
+        # Filtrar por el año de release
+        result_df = df[df['year_released'] == year_released]
+
+        # Convertir a formato de diccionario
+        response_data = result_df.set_index('year_released').to_dict(orient='index')
+    
+        return response_data
+    
     except FileNotFoundError as e:
         raise HTTPException(status_code=500, detail=f"Error al cargar el archivo sentiment_analysis.csv: {str(e)}")
     except Exception as e:
@@ -224,7 +233,7 @@ async def enpoint5(year_released: int):
 # In[ ]:
 
 
-@app.get("/recomendacion_usuario/{item_id}", tags=['recomendacion_usuario item_item'])
+@app.get("/recomendacion_us ©uario/{item_id}", tags=['recomendacion_usuario item_item'])
 async def item(item_id: int):
     """
     Descripción: Ingresando el id de producto, devuelve una lista con 5 juegos recomendados similares al ingresado.
