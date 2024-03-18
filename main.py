@@ -13,7 +13,7 @@ from fastapi.responses import JSONResponse
 import traceback  
 from typing import List, Dict
 import pandas as pd
-from functions import UsersRecommend, sentiment_analysis, UsersWorstDeveloper, PlayTimeGenre, UserForGenre, recomendacion_usuario
+from functions import UsersRecommend, sentiment_analysis, UsersNotRecommend, PlayTimeGenre, UserForGenre, recomendacion_usuario
 
 
 # ### Instancia
