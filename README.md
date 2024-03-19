@@ -108,18 +108,35 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
 
 ## **6. Estructura del Repositorio**
 
-1. /[Data_files](): Almacena los datasets utilizados en una versión limpia y procesada de los mismos. Las fuentes de datos iniciales se encuentra almacenadas en la carpeta input en el siguiente repositorio [Google Drive](https://drive.google.com/drive/folders/1L0WaceEowDNwZFLYHQgoYv0rtuAm85ac?usp=sharing)
+1. /[Data_files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files): Almacena los datasets utilizados en una versión limpia y procesada de los mismos. Las fuentes de datos iniciales se encuentra almacenadas en la carpeta input en el siguiente repositorio [Google Drive](https://drive.google.com/drive/folders/1L0WaceEowDNwZFLYHQgoYv0rtuAm85ac?usp=sharing)
 
-2. /Jupyter_Notebooks: Contiene los Jupyter Notebooks con el código completo y bien comentado donde se realizaron las extracciones, transformaciones y carga de datos (ETL), análisis exploratorio de los datos (EDA), y el archivo con Diccionario de datos, MVP, Pautas del proyectoVarios.
+   1. /[API_Files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/API_Files): Contiene los datasets en formato CSV consumidos por la API.
+
+   2.  /[DF_Limpios](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/DF_limpios): Contiene los archivos depurados después de haber realizado el ETL.
    
-3. 
+   3.  /[ML_Files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/ML_Files): Contiene los archivos consumidos por la API para hacer el sistema de recomendación.
 
-4. /API_Files: Contiene los datasets en formato CSV consumidos por la API.
 
-5. /DF_Limpios: Contiene los archivos depurados después de haber realizado el ETL.
+2. /[Jupyter_Notebooks](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Jupyter_Notebooks): Contiene los Jupyter Notebooks con el código completo y bien comentado donde se realizaron las extracciones, transformaciones y carga de datos (ETL) y Diferentes analisis que se ejecutaron en la ejecuci'on del proyecto.
+   
+   1. [Steam Games (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/1_Steam_Game_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
+   
+   2. [User Items  (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/2_User_Items_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
+   
+   3. [User Reviews (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/3_User_Reviews_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
+   
+   4. [Análisis exploratorio de los datos (EDA)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/4_EDA_.ipynb).
+   
+   5. [Api DF](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/5_API_DF_.ipynb): a partir de los dataframes limpios, creamos dataframes especificos que seran consumidos por la API.
+   
+   6. [Item Item ML](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/6_Item_Item_ML_.ipynb): Modelo de ML de recomendacion para que al ingresar el id de un juego recibamos una lista con 5 juegos recomendados similares al ingresado.
+   
+   7. [Functions](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/7_Functions_.ipynb): Funciones que seran consumidas por la API a partir de los dataframes creados a partir de datos limpios.
+   
+   8. Diccionario de datos.
+  
+   
+3. /[Others](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Others): Carpeta con imágenes y recursos utilizados en el desarrollo del proyecto.
 
-6. /ML_Files: Contiene los archivos consumidos por la API para hacer el sistema de recomendación.
 
-7. /Others: Carpeta con imágenes y recursos utilizados en el desarrollo del proyecto.
-
-8. /Video: Contiene el video explicativo del proyecto, publicado en Youtube.
+4. /Video: Contiene el video explicativo del proyecto, publicado en Youtube.
