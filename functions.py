@@ -25,7 +25,7 @@ import numpy as np
 
 
 def PlayTimeGenre(genero: str):
-    result_df = pd.read_parquet('Dataframes/Api_files/PlayTimeGenre.parquet')
+    result_df = pd.read_parquet('Data_Files/API_Files/PlayTimeGenre.parquet')
 
     # Filtrar el DataFrame para el género específico
     filtered_df = result_df[result_df['genres'] == genero]
@@ -37,7 +37,7 @@ def PlayTimeGenre(genero: str):
     max_hours_year = grouped_df.idxmax()
 
     # Construye el response_data
-    response_data = {"Año con más horas jugadas para {}: {}".format(genero, max_hours_year)}
+    response_data = {"Año con más horas jugadas para el genero {}: {}".format(genero, max_hours_year)}
 
     # Muestra el resultado
     return response_data
@@ -55,7 +55,7 @@ def PlayTimeGenre(genero: str):
 
 
 def UserForGenre(genero:str):
-    consulta2 = pd.read_parquet('Dataframes/Api_files/UserForGenre.parquet')
+    consulta2 = pd.read_parquet('Data_Files/API_Files/UserForGenre.parquet')
     
     # Filtrar el DataFrame por el género dado
     genre_data = consulta2[consulta2['genres'] == genero]
@@ -72,7 +72,7 @@ def UserForGenre(genero:str):
 
     # Crear el diccionario de retorno
     result = {
-        "Usuario con más horas jugadas para Género {}".format(genero): top_user,
+        "Nombre del Usuario con más horas jugadas para el Género {}".format(genero): top_user,
         "Horas jugadas": hours_list
     }
 
@@ -91,14 +91,14 @@ def UserForGenre(genero:str):
 
 
 def UsersRecommend(year: int):
-    df = pd.read_parquet('Dataframes/Api_files/UsersRecommend.parquet')
+    df = pd.read_parquet('Data_Files/API_Files/UsersRecommend.parquet')
     
     # Filtrar el DataFrame por el año especificado
     result_df = df[df['year'] == year]
 
-    response_data = [{"Puesto 1 recomendados": result_df.iloc[0]['name']},
-                     {"Puesto 2 recomendados": result_df.iloc[1]['name']},
-                     {"Puesto 3 recomendados": result_df.iloc[2]['name']}]
+    response_data = [{"Puesto 1 de recomendados por los usuarios": result_df.iloc[0]['name']},
+                     {"Puesto 2 de recomendados por los usuarios": result_df.iloc[1]['name']},
+                     {"Puesto 3 de recomendados por los usuarios": result_df.iloc[2]['name']}]
 
     return response_data
 
@@ -114,14 +114,14 @@ def UsersRecommend(year: int):
 
 
 def UsersNotRecommend(year: int):
-    df = pd.read_parquet('Dataframes/Api_files/UsersNotRecommend.parquet')
+    df = pd.read_parquet('Data_Files/API_Files/UsersNotRecommend.parquet')
 
     # Filtrar el DataFrame por el año especificado
     result_df = df[df['year'] == year]
 
-    response_data = [{"Puesto 1 Menos recomendado": result_df.iloc[0]['name']},
-                     {"Puesto 2 Menos recomendado": result_df.iloc[1]['name']},
-                     {"Puesto 3 Menos recomendado": result_df.iloc[2]['name']}]
+    response_data = [{"Puesto 1 de Menos recomendados por los usuarios": result_df.iloc[0]['name']},
+                     {"Puesto 2 de Menos recomendados por los usuarios": result_df.iloc[1]['name']},
+                     {"Puesto 3 de Menos recomendados por los usuarios": result_df.iloc[2]['name']}]
 
     return response_data
 
@@ -143,7 +143,7 @@ def UsersNotRecommend(year: int):
 
 
 def sentiment_analysis(year_released: int):
-    df = pd.read_parquet('Dataframes/Api_files/sentiment_analysis.parquet')
+    df = pd.read_parquet('Data_Files/API_Files/sentiment_analysis.parquet')
 
     # Filtrar por el año de release
     result_df = df[df['year_released'] == year_released]
@@ -167,7 +167,7 @@ def sentiment_analysis(year_released: int):
 
 
 def recomendacion_usuario(item_id):
-    df = pd.read_parquet('Dataframes/ML_files/ItemItem_recomenda.parquet')
+    df = pd.read_parquet('Data_Files/ML_Files/Item_Item_ML.parquet')
     
     # Filtrar el DataFrame por el item_id especificado
     result_df = df[df['item_id'] == item_id]

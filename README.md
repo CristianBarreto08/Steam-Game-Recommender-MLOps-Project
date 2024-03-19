@@ -1,4 +1,5 @@
-![Banner](Adicionales/Bann.jpg)
+![Banner](Others/Bann.jpg)
+
 # Proyecto SteamInsights: MLOps
 
 ¡Bienvenido a SteamInsights! Este proyecto se centra en implementar un sistema de recomendación de videojuegos para usuarios en la plataforma de Steam. Como MLOps Engineer, enfrentamos el desafío de trabajar con datos crudos y no procesados, lo que dificulta la construcción del modelo.
@@ -24,7 +25,7 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
 - **Endpoint 5 (sentiment_analysis):** Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
 
 # Proceso del Proyecto
-![Funnel](Adicionales/funn.png)
+![Funnel](Others/funn.png)
 
 ## **Proyecto 1: Ingeniería de Datos (ETL y API)**
 
@@ -78,7 +79,7 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
 
 
 #
-![Banner](Adicionales/Image.jpg)
+![Banner](Others/Image.jpg)
 
 ## **2. Análisis Exploratorio de Datos (EDA)**
 
@@ -107,16 +108,18 @@ Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio d
 
 ## **6. Estructura del Repositorio**
 
-1. /Notebooks: Contiene los Jupyter Notebooks con el código completo y bien comentado donde se realizaron las extracciones, transformaciones y carga de datos (ETL), análisis exploratorio de los datos (EDA), y el archivo con Diccionario de datos, MVP, Pautas del proyectoVarios.
+1. /[Data_files](): Almacena los datasets utilizados en una versión limpia y procesada de los mismos. Las fuentes de datos iniciales se encuentra almacenadas en la carpeta input en el siguiente repositorio [Google Drive](https://drive.google.com/drive/folders/1L0WaceEowDNwZFLYHQgoYv0rtuAm85ac?usp=sharing)
+
+2. /Jupyter_Notebooks: Contiene los Jupyter Notebooks con el código completo y bien comentado donde se realizaron las extracciones, transformaciones y carga de datos (ETL), análisis exploratorio de los datos (EDA), y el archivo con Diccionario de datos, MVP, Pautas del proyectoVarios.
    
-2. /Datasets: Almacena los datasets utilizados en una versión limpia y procesada de los mismos. Las fuentes de datos iniciales se encuentra almacenadas en la carpeta input en el siguiente repositorio Google Drive.
+3. 
 
-3. /Archivos_API: Contiene los datasets en formato CSV consumidos por la API.
+4. /API_Files: Contiene los datasets en formato CSV consumidos por la API.
 
-4. /Archivos_Limpios: Contiene los archivos depurados después de haber realizado el ETL.
+5. /DF_Limpios: Contiene los archivos depurados después de haber realizado el ETL.
 
-5. /Archivos_ML: Contiene los archivos consumidos por la API para hacer el sistema de recomendación.
+6. /ML_Files: Contiene los archivos consumidos por la API para hacer el sistema de recomendación.
 
-6. /assets: Carpeta con imágenes y recursos utilizados en el desarrollo del proyecto.
+7. /Others: Carpeta con imágenes y recursos utilizados en el desarrollo del proyecto.
 
-7. /Video: Contiene el video explicativo del proyecto, publicado en Youtube.
+8. /Video: Contiene el video explicativo del proyecto, publicado en Youtube.

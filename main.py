@@ -40,7 +40,7 @@ async def root():
     ---
 
     """
-    return {"Proyecto Individual": "Plataforma Steam - Cristian Felipe Barreto"}
+    return {"MLOps - Proyecto 1": "Plataforma Steam - Cristian Felipe Barreto"}
 
 
 # ### Endpoint 1
