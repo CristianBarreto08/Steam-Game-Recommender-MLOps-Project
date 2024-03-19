@@ -2,7 +2,9 @@
 
 # Proyecto SteamInsights: MLOps
 
-¡Bienvenido a SteamInsights! Este proyecto se centra en implementar un sistema de recomendación de videojuegos para usuarios en la plataforma de Steam. Como MLOps Engineer, enfrentamos el desafío de trabajar con datos crudos y no procesados, lo que dificulta la construcción del modelo.
+Este proyecto se enfoca en implementar un sistema de recomendación de videojuegos para usuarios en Steam. Como MLOps Engineer, enfrentamos el reto de trabajar con datos crudos y no procesados. Nos enfrentamos a desafios como la falta de madurez en los datos nos llevó a asumir el rol de Data Engineer para reconstruirlos y desarrollar un MVP. A pesar de los obstáculos, estamos comprometidos con el éxito del proyecto. 
+
+¡Únete a nosotros en este emocionante viaje para mejorar la experiencia de juego en Steam!
 
 ## Objetivo
 
