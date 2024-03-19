@@ -14,7 +14,7 @@ import traceback
 from typing import List, Dict
 import pandas as pd
 from functions import UsersRecommend, sentiment_analysis, UsersNotRecommend, PlayTimeGenre, UserForGenre, recomendacion_usuario
-
+import numpy as np
 
 # ### Instancia
 
@@ -200,7 +200,7 @@ async def endpoint4(year: str):
 
 
 @app.get("/sentiment_analysis/{year_released}", tags=['sentiment_analysis'])
-async def sentiment_analysis(year_released: int):
+async def enpoint5(year_released: int):
     """
     Descripción: Según el año de lanzamiento, se devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.
     
@@ -210,16 +210,8 @@ async def sentiment_analysis(year_released: int):
     Ejemplo de retorno: {'year_released' : [Negative = 182, Neutral = 120, Positive = 278]}
     """
     try:
-        
-        df = pd.read_parquet('Dataframes/Api_files/sentiment_analysis.parquet')
-
-        # Filtrar por el año de release
-        result_df = df[df['year_released'] == year_released]
-
-        # Convertir a formato de diccionario
-        response_data = result_df.set_index('year_released').to_dict(orient='index')
-    
-        return response_data
+        result = sentiment_analysis(year_released)
+        return result
     
     except FileNotFoundError as e:
         raise HTTPException(status_code=500, detail=f"Error al cargar el archivo sentiment_analysis.csv: {str(e)}")
@@ -228,12 +220,34 @@ async def sentiment_analysis(year_released: int):
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
 
-# ### Sistema de recomendación item-item
+# # ### Sistema de recomendación item-item
 
-# In[ ]:
+# # In[ ]:
 
 
-@app.get("/recomendacion_us ©uario/{item_id}", tags=['recomendacion_usuario item_item'])
+# @app.get("/recomendacion_us ©uario/{item_id}", tags=['recomendacion_usuario item_item'])
+# async def item(item_id: int):
+#     """
+#     Descripción: Ingresando el id de producto, devuelve una lista con 5 juegos recomendados similares al ingresado.
+    
+#     Parámetros:
+#         - item_id (str): Id del producto para el cual se busca la recomendación. Debe ser un número, ejemplo: 761140
+        
+#     Ejemplo de retorno: "['弹炸人2222', 'Uncanny Islands', 'Beach Rules', 'Planetarium 2 - Zen Odyssey', 'The Warrior Of Treasures']"
+
+#     """
+#     try:
+#         item_id = int(item_id) 
+#         resultado= recomendacion_usuario(item_id)
+#         return resultado
+    
+    
+#     except Exception as e:
+#         return {"error":str(e)}
+
+
+
+@app.get("/recomendacion_us ©uario/{item_id}", tags=['recomendacion_usuario item_item'])
 async def item(item_id: int):
     """
     Descripción: Ingresando el id de producto, devuelve una lista con 5 juegos recomendados similares al ingresado.
@@ -246,8 +260,9 @@ async def item(item_id: int):
     """
     try:
         item_id = int(item_id) 
-        resultado= recomendacion_usuario(item_id)
-        return resultado
+        resultado = recomendacion_usuario(item_id)
+        return JSONResponse(content=resultado)
+    
     except Exception as e:
-        return {"error":str(e)}
+        return JSONResponse(content={"error":str(e)})
 

@@ -10,6 +10,7 @@
 
 import pandas as pd
 import os
+import numpy as np 
 
 
 # ### Endpoint 1
@@ -148,12 +149,16 @@ def sentiment_analysis(year_released: int):
     result_df = df[df['year_released'] == year_released]
 
     # Convertir las columnas que contienen numpy.int64 a tipos de Python nativos
-    result_df['column_name'] = result_df['column_name'].astype(int)  # Reemplaza 'column_name' con el nombre de la columna
+    result_df['year_released'] = result_df['year_released'].astype(int)
+    result_df['Negative'] = result_df['Negative'].astype(int)
+    result_df['Neutral'] = result_df['Neutral'].astype(int)
+    result_df['Positive'] = result_df['Positive'].astype(int)
     
     # Convertir a formato de diccionario
     response_data = result_df.set_index('year_released').to_dict(orient='index')
     
     return response_data
+
 # ### ML
 
 # ### Recomendación item-item
@@ -164,12 +169,17 @@ def sentiment_analysis(year_released: int):
 def recomendacion_usuario(item_id):
     df = pd.read_parquet('Dataframes/ML_files/ItemItem_recomenda.parquet')
     
-    # Filtrar el DataFrame por el año especificado
+    # Filtrar el DataFrame por el item_id especificado
     result_df = df[df['item_id'] == item_id]
     
-    response_data = result_df['Recomendaciones']
- 
+    # Convertir cualquier ndarray en la lista
+    result_df['Recomendaciones'] = result_df['Recomendaciones'].apply(lambda x: x.tolist() if isinstance(x, np.ndarray) else x)
+    
+    response_data = result_df['Recomendaciones'].tolist()  # Convertir la serie a una lista
+    
     return response_data
+
+
 
 # In[ ]:
 
