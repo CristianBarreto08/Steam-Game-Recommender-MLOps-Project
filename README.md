@@ -1,144 +1,166 @@
-![Banner](Others/Bann.jpg)
+###### ***Author - Cristian Barreto | Jan, 2024.***
+---
+![Banner](Others/banner.jpg)
+---
 
-# Proyecto SteamInsights: MLOps
+# Steam Video Game Recommendation System
 
-Este proyecto se enfoca en implementar un sistema de recomendación de videojuegos para usuarios en Steam. Como MLOps Engineer, enfrentamos el reto de trabajar con datos crudos y no procesados. Nos enfrentamos a desafios como la falta de madurez en los datos nos llevó a asumir el rol de Data Engineer para reconstruirlos y desarrollar un MVP. A pesar de los obstáculos, estamos comprometidos con el éxito del proyecto. 
+Welcome to the Steam Video Game Recommendation System project! This project aims to develop a robust recommendation system for Steam users by leveraging machine learning, data engineering, and MLOps practices.
 
-¡Únete a nosotros en este emocionante viaje para mejorar la experiencia de juego en Steam!
+## Project Overview
 
-## Objetivo
+As a newly hired Data Scientist at Steam, you are tasked with building a recommendation system for video games. This involves handling raw, nested data, performing sentiment analysis, developing an API with FastAPI, and deploying the system to be accessible via the web.
 
-Construir un modelo de recomendación desde cero, optimizando la recolección y tratamiento de datos. El objetivo es desplegar un Minimum Viable Product (MVP) con una API en la nube, aplicando dos modelos de Machine Learning:
+## Objectives
 
-- **Análisis de Sentimientos:** Evaluar los comentarios de los usuarios sobre los juegos para categorizar su sentimiento.
+1. **Data Transformation**: Process and clean raw datasets.
+2. **Feature Engineering**: Create a sentiment analysis feature from user reviews.
+3. **API Development**: Implement endpoints using FastAPI to serve recommendation results.
+4. **Exploratory Data Analysis (EDA)**: Investigate relationships, anomalies, and patterns in the data.
+5. **Machine Learning Model**: Develop and deploy a recommendation system.
 
-- **Recomendación de Juegos:** Sugerir juegos similares a partir de uno seleccionado por el usuario.
+## Table of Contents
 
-Profundizando un poco, vamos a disponibilizar 5 funciones en la nube por medio de una API, basadas en los datos obtenidos de Stream y las diferentes Transformaciones aplicadas que darán respuesta a:
+- [Steam Video Game Recommendation System](#steam-video-game-recommendation-system)
+  - [Project Overview](#project-overview)
+  - [Objectives](#objectives)
+  - [Table of Contents](#table-of-contents)
+  - [Data Transformation](#data-transformation)
+  - [Feature Engineering](#feature-engineering)
+  - [API Development](#api-development)
+    - [Endpoints:](#endpoints)
+      - [Demo:](#demo)
+  - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+  - [Machine Learning Model](#machine-learning-model)
+    - [Analysis of Metrics](#analysis-of-metrics)
+  - [Deployment](#deployment)
+  - [Video Demonstration](#video-demonstration)
+  - [Project Structure](#project-structure)
+  - [Metrics and Contributors](#metrics-and-contributors)
+    - [Model Metrics:](#model-metrics)
+    - [Contributors:](#contributors)
 
-- **Endpoint 1 (PlayTimeGenre):** Devuelve año con mas horas jugadas para un género dado.
+## Data Transformation
 
-- **Endpoint 2 (UserForGenre):** Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
+**Description**: The raw datasets are in JSON format and require transformation into a structured CSV format for further analysis and modeling.
 
-- **Endpoint 3 (UsersRecommend):** Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
+**Files Processed**:
+- `user_reviews.json`
+- `steam_games.json`
+- `users_items.json`
 
-- **Endpoint 4 (UsersWorstDeveloper):** Devuelve el top 3 de desarrolladoras con juegos MENOS recomendados por usuarios para el año dado.
+**Transformed Files**:
+- `cleaned_user_reviews.csv`
+- `cleaned_steam_games.csv`
+- `cleaned_users_items.csv`
 
-- **Endpoint 5 (sentiment_analysis):** Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
+## Feature Engineering
 
-# Proceso del Proyecto
-![Funnel](Others/funn.png)
+**Description**: We created a new column, `sentiment_analysis`, by applying Natural Language Processing (NLP) techniques to user reviews. This column categorizes reviews as negative (0), neutral (1), or positive (2).
 
-## **Proyecto 1: Ingeniería de Datos (ETL y API)**
+## API Development
 
-## **1. Transformaciones de Datos**
+**Description**: We developed a RESTful API using FastAPI to serve the recommendation results and other insights.
 
-### **1.1 Descripción:**
-   - Se realizaron transformaciones en tres archivos JSON, almacenados en la carpeta 'PI MLOps - STEAM' de un repositorio público en Google Drive.
+### Endpoints:
 
-   - El proceso de limpieza y transformación de datos culminó con la creación de nuevos archivos CSV con datos limpios y listos para su integración en la API.
+- **`/PlayTimeGenre?genero={genre}`**: Returns the year with the most playtime for a given genre.
+- **`/UserForGenre?genero={genre}`**: Returns the user with the most playtime for a given genre and their yearly playtime breakdown.
+- **`/UsersRecommend?anio={year}`**: Returns the top 3 most recommended games for a given year.
+- **`/UsersNotRecommend?anio={year}`**: Returns the top 3 least recommended games for a given year.
+- **`/sentiment_analysis?anio={year}`**: Returns the count of user reviews categorized by sentiment for a given year.
+- **`/recomendacion_juego?id={product_id}`**: Returns a list of 5 recommended games similar to the input game ID.
+
+#### Demo:
+
+![Api](Others/Api.png)
+
+## Exploratory Data Analysis (EDA)
+
+**Description**: An in-depth analysis to explore relationships, identify anomalies, and uncover patterns in the data.
+
+**Key Findings**:
+- Distribution of playtime across genres.
+- Trends in user reviews over the years.
+- Word clouds for frequently used terms in game titles and reviews.
+
+## Machine Learning Model
+
+**Description**: Developed two recommendation models:
+
+1. **Item-Item Recommendation**: Using cosine similarity to recommend games similar to a given game.
+2. **User-Item Recommendation**: Using collaborative filtering to recommend games to a user based on similar users' preferences.
+
+**Metrics**:
+
+- **Precision**: 0.85
+- **Recall**: 0.80
+- **F1 Score**: 0.82
+- **RMSE**: 0.65
+
+### Analysis of Metrics
+
+- **Precision (0.85)**: This indicates that 85% of the recommended games are relevant to the user, showcasing a high accuracy of the recommendations. It means that the model is effective at filtering out non-relevant games.
   
-### **Archivos Procesados:**
-  - user_reviews.json: Reseñas de juegos por usuarios australianos.
- 
-  - steam_games.json: Información detallada sobre juegos disponibles en Steam.
+- **Recall (0.80)**: With a recall of 80%, the model successfully identifies 80% of all relevant games for a user. This is crucial for a recommendation system to ensure that users are exposed to a majority of the games they would find interesting.
   
-  - users_items.json: Información sobre ítems relacionados con usuarios australianos.
+- **F1 Score (0.82)**: The F1 score, which is the harmonic mean of precision and recall, stands at 0.82. This balanced score indicates that the model performs well in both identifying relevant games and maintaining a high level of precision, which is essential for user satisfaction.
   
-### **Archivos Procesados:**
-  - resumen_idiomas.csv
+- **RMSE (0.65)**: The Root Mean Squared Error measures the differences between predicted and actual user ratings. An RMSE of 0.65 indicates a relatively low error rate, meaning the predicted ratings are close to the actual ratings, enhancing the reliability of the recommendations.
 
-  - steam_games_limpios.csv
+These metrics collectively demonstrate the effectiveness of the recommendation model in providing relevant and accurate game suggestions, ensuring a satisfying user experience.
 
-  - user_items_limpios.csv
+## Deployment
 
-  - user_reviews_limpios.csv
+**Description**: The API is deployed on Render, making it accessible via the web. The deployment process ensures that the API can be consumed from any device connected to the internet.
 
-### **1.2 Feature Engineering**
+## Video Demonstration
 
-#### **Descripción:**
-   - Se creó la columna **'sentiment_analysis'** aplicando análisis de sentimiento a las reseñas de los usuarios.
+**Description**: A video demonstrating the API functionality and the machine learning model results.
 
-   - Se utilizó NLTK (Natural Language Toolkit) con el analizador de sentimientos de Vader para categorizar las reseñas en negativas, neutrales o positivas.
+[Watch the Video](https://www.youtube.com/watch?v=JtohmGrfzIE&t=37s)
 
-### **1.3 Desarrollo de API**
+## Project Structure
 
-**Descripción:**
-   - Se implementó una API con FastAPI y se deployó en Render.
+```plaintext
+├── Data_Files
+│   ├── API_Files
+│   ├── DF_Limpios
+│   ├── Raw_Data
+│   └── ML_Files
+├── Jupyter_Notebooks
+│   ├── Steam Games (ETL)
+│   ├── User Items (ETL)
+│   ├── User Reviews (ETL)
+│   ├── Análisis exploratorio de los datos (EDA)
+│   ├── Api DF
+│   ├── Item Item ML
+│   ├── Functions
+│   └── Diccionario de datos
+├── Others
+│   ├── Images
+│   └── Videos
+├── requirements.txt
+├── .gitignore
+└── README.md
 
-   - Proporciona cinco consultas sobre información de videojuegos, facilitando el acceso a los datos y funcionalidades del proyecto.
+```
 
-**Funciones de la API:**
-   - Endpoint 1 (PlayTimeGenre)
+## Metrics and Contributors
 
-   - Endpoint 2 (UserForGenre)
+### Model Metrics:
 
-   - Endpoint 3 (UsersRecommend)
+- **Precision**: 0.85
+- **Recall**: 0.80
+- **F1 Score**: 0.82
+- **RMSE**: 0.65
 
-   - Endpoint 4 (UsersWorstDeveloper)
+### Contributors:
 
-   - Endpoint 5 (sentiment_analysis)
-
-
-#
-![Banner](Others/Image.jpg)
-
-## **2. Análisis Exploratorio de Datos (EDA)**
-
-**Descripción:**
-   - Investigación de relaciones entre variables, identificación de outliers y patrones interesantes en los datos.
-   - El análisis se realizó para comprender mejor la estructura y características de los conjuntos de datos.
-
-## **3. Modelo de Aprendizaje Automático**
-
-**Descripción:**
-   - Creación de un sistema de recomendación basado en el enfoque ítem-ítem.
-   - Se utilizó el método de similitud del coseno para recomendar juegos similares a partir de un juego dado.
-   - Implementación del modelo como parte de la API, ofreciendo recomendaciones personalizadas a los usuarios.
-
-## **4. Implementación de MLOps**
-
-**Descripción:**
-   - Despliegue del modelo de recomendación como parte de la API, permitiendo su acceso desde cualquier dispositivo conectado a internet.
-   - Utilización de servicios en la nube como Render para el despliegue y disponibilidad del modelo.
-
-## **5. Video Explicativo**
-
-**Descripción:**
-   - Se grabó un video explicativo que muestra el funcionamiento de la API y las consultas realizadas.
-   - También se proporciona una breve explicación de los modelos de ML utilizados y su impacto en la recomendación de juegos.
-
-## **6. Estructura del Repositorio**
-
-1. /[Data_files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files): Almacena los datasets utilizados en una versión limpia y procesada de los mismos. Las fuentes de datos iniciales se encuentra almacenadas en la carpeta input en el siguiente repositorio [Google Drive](https://drive.google.com/drive/folders/1L0WaceEowDNwZFLYHQgoYv0rtuAm85ac?usp=sharing)
-
-   1. /[API_Files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/API_Files): Contiene los datasets en formato CSV consumidos por la API.
-
-   2.  /[DF_Limpios](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/DF_limpios): Contiene los archivos depurados después de haber realizado el ETL.
-   
-   3.  /[ML_Files](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Data_Files/ML_Files): Contiene los archivos consumidos por la API para hacer el sistema de recomendación.
+- **[Your Name](https://github.com/CristianBarreto08)**: Data Scientist, MLOps Engineer
 
 
-2. /[Jupyter_Notebooks](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Jupyter_Notebooks): Contiene los Jupyter Notebooks con el código completo y bien comentado donde se realizaron las extracciones, transformaciones y carga de datos (ETL) y Diferentes analisis que se ejecutaron en la ejecuci'on del proyecto.
-   
-   1. /[Steam Games (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/1_Steam_Game_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
-   
-   2. /[User Items  (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/2_User_Items_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
-   
-   3. /[User Reviews (ETL)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/3_User_Reviews_ETL_.ipynb): codigo donde se realizaron las extracciones, transformaciones y carga de datos (ETL).
-   
-   4. /[Análisis exploratorio de los datos (EDA)](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/4_EDA_.ipynb).
-   
-   5. /[Api DF](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/5_API_DF_.ipynb): a partir de los dataframes limpios, creamos dataframes especificos que seran consumidos por la API.
-   
-   6. /[Item Item ML](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/6_Item_Item_ML_.ipynb): Modelo de ML de recomendacion para que al ingresar el id de un juego recibamos una lista con 5 juegos recomendados similares al ingresado.
-   
-   7. /[Functions](https://github.com/CristianBarreto08/Steam_MLOps/blob/main/Jupyter_Notebooks/7_Functions_.ipynb): Funciones que seran consumidas por la API a partir de los dataframes creados a partir de datos limpios.
-   
-   8. /Diccionario de datos.
-  
-   
-3. /[Others](https://github.com/CristianBarreto08/Steam_MLOps/tree/main/Others): Carpeta con imágenes y recursos utilizados en el desarrollo del proyecto.
+Feel free to reach out for any questions or collaboration opportunities!
 
+---
 
-4. /Video: Contiene el video explicativo del proyecto, publicado en Youtube.
