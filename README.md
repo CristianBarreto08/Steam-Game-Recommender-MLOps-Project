@@ -157,7 +157,7 @@ These metrics collectively demonstrate the effectiveness of the recommendation m
 
 ### Contributors:
 
-- **[Your Name](https://github.com/CristianBarreto08)**: Data Scientist, MLOps Engineer
+- **[Cristian Barreto](https://github.com/CristianBarreto08)**: Data Scientist, MLOps Engineer - **[LinkedIn](https://www.linkedin.com/in/cristian-barreto13/)**
 
 
 Feel free to reach out for any questions or collaboration opportunities!
